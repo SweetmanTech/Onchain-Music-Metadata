@@ -1,13 +1,13 @@
-# Sample Hardhat Project
+# Music NFT OnChain Metadata
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+Standard for musicians pioneered by Catalog & Mint Songs.
 
-Try running some of the following tasks:
+### Get Started
 
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+To add music NFT metadata to your next music NFT drop, just
+
+1. `npm i onchain-music-metadata`
+2. `import "onchain-music-metadata/contracts/OnChainMusicMetadata.sol";`
+3. `contract MyMusic is OnChainMusicMetadata`
+
+Check out our Github for the latest changes.
