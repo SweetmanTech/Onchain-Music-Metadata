@@ -1,0 +1,35 @@
+{
+  "name": "onchain-music-metadata",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^1.0.2",
+    "hardhat": "^2.10.1"
+  },
+  "description": "NFT music metadata. Stored on-chain as Base64 encoded string. Works with OpenSea, Zora, Catalog, and all other music NFT Protocols.",
+  "version": "1.0.1",
+  "main": "contracts/OnChainMusicMetadata.sol",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.7.2"
+  },
+  "scripts": {
+    "test": "npx hardhat test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SweetmanTech/Onchain-Music-Metadata.git"
+  },
+  "keywords": [
+    "music",
+    "nft",
+    "onchain",
+    "metadata"
+  ],
+  "author": "sweetman.eth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SweetmanTech/Onchain-Music-Metadata/issues"
+  },
+  "homepage": "https://github.com/SweetmanTech/Onchain-Music-Metadata#readme"
+}
