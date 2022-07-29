@@ -4,7 +4,7 @@
     "@nomicfoundation/hardhat-toolbox": "^1.0.2",
     "hardhat": "^2.10.1"
   },
-  "description": "This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.",
+  "description": "NFT music metadata. Stored on-chain as Base64 encoded string. Works with OpenSea, Zora, Catalog, and all other music NFT Protocols.",
   "version": "1.0.0",
   "main": "contracts/OnChainMusicMetadata.sol",
   "directories": {
