@@ -83,7 +83,7 @@ contract ExampleToken is OnChainMusicMetadata {
 
     function getImage() public pure returns (Image memory) {
         string
-            memory artworkUri = "ipfs://bafybeihov64eutv5yutynd5f7zg6ww2nt5yazcq6eerx77tkdh3fd3rclq";
+            memory artworkUri = "ipfs://bafkreibjsjxxys2pl6wijorije7yixjsw7xlho5krqdimwayyobnybewey";
         string memory artworkMimeType = "image/png";
         return Image(artworkUri, artworkMimeType, "music nfts");
     }
