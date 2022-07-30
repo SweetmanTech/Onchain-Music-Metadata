@@ -61,7 +61,7 @@ contract OnChainMusicMetadata is MusicStructs {
     {
         string memory _string = "[";
         for (uint256 i = 0; i < _array.length; i++) {
-            _string = string(abi.encodePacked(_string, _array[i]));
+            _string = string(abi.encodePacked(_string, _getString(_array[i])));
             if (i < _array.length - 1) {
                 _string = string(abi.encodePacked(_string, ","));
             }
