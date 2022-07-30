@@ -59,8 +59,8 @@ contract OnChainMusicMetadata is MusicStructs {
         return _string;
     }
 
-    function _createTokenURI(uint256 tokenId)
-        internal
+    function musicTokenUri(uint256 tokenId)
+        public
         view
         virtual
         returns (string memory)

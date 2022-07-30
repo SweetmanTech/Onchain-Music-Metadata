@@ -13,7 +13,7 @@ To add music NFT metadata to your next music NFT drop, just
 1. `npm i onchain-music-metadata`
 2. `import "onchain-music-metadata/contracts/OnChainMusicMetadata.sol";`
 3. `contract MyMusic is OnChainMusicMetadata`
-4. use the `_tokenUri(tokenId)` method freely.
+4. use the `musicTokenUri(tokenId)` method freely.
 
 ### Example Music NFT:
 
