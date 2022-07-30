@@ -6,8 +6,12 @@ Standard for musicians pioneered by [Catalog](https://beta.catalog.works/) & [Mi
 - WARNING: these contracts are unaudited
 ```
 
-- Music NFT - [Smart Contract](https://mumbai.polygonscan.com/address/0xEdC026452bFB91112230270049939afCB4C78A75#code).
-- How it looks on [OpenSea](https://testnets.opensea.io/assets/mumbai/0xedc026452bfb91112230270049939afcb4c78a75/1)
+### You Newest Tool for Music NFTs (100% on chain)
+
+- [Your Smart Contract](https://mumbai.polygonscan.com/address/0xEdC026452bFB91112230270049939afCB4C78A75#code).
+- [Your Tokens in OpenSea](https://testnets.opensea.io/assets/mumbai/0xedc026452bfb91112230270049939afcb4c78a75/1)
+- Works out of the box.
+- 100% free CC0 technology (MIT License - use this w/o crediting me).
 
 ### Get Started
 
@@ -21,7 +25,7 @@ To add music NFT metadata to your next music NFT drop, just
 ### Example Music NFT:
 
 ```
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
 import "onchain-music-metadata/contracts/Example/ExampleToken.sol";
@@ -59,6 +63,7 @@ contract MusicNFT is ERC721, ExampleToken {
 
 - [DanielAbalde/NFT-On-Chain-Metadata](https://github.com/DanielAbalde/NFT-On-Chain-Metadata)
 - [Zora Editions](https://github.com/ourzora/zora-drops-contracts/blob/main/src/metadata/EditionMetadataRenderer.sol)
+- [Nouns DAO #177](https://nouns.wtf/)
 
 ### More info
 
