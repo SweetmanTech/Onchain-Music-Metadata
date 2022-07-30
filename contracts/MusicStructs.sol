@@ -38,7 +38,7 @@ contract MusicStructs {
         PublishingData publishingData;
         Image artwork;
         string projectType; // Single / EP / Album
-        string upc; // 1234567890123
+        string upc; // 03600029145
     }
 
     struct Collaborator {
