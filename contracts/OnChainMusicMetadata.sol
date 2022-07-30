@@ -169,7 +169,7 @@ contract OnChainMusicMetadata is MusicStructs {
             songs[_tokenId].songPublishingData.description
         );
         string memory losslessAudio = values[0] = _getString(
-            songs[_tokenId].songPublishingData.title
+            songs[_tokenId].song.audio.losslessAudio
         );
         string memory title = _getString(
             songs[_tokenId].songPublishingData.title

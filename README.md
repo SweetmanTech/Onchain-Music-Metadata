@@ -6,6 +6,9 @@ Standard for musicians pioneered by [Catalog](https://beta.catalog.works/) & [Mi
 - WARNING: these contracts are unaudited
 ```
 
+- Music NFT - [Smart Contract](https://mumbai.polygonscan.com/address/0xEdC026452bFB91112230270049939afCB4C78A75#code).
+- How it looks on [OpenSea](https://testnets.opensea.io/assets/mumbai/0xedc026452bfb91112230270049939afcb4c78a75/1)
+
 ### Get Started
 
 To add music NFT metadata to your next music NFT drop, just
