@@ -9,7 +9,8 @@ import "./MusicStructs.sol";
 contract OnChainMusicMetadata is MusicStructs {
     mapping(uint256 => SongMetadata) public songs; // metadata for each token
     ProjectMetadata public _projectMetadata; // metadata for the project
-    mapping(uint256 => Collaborator[]) public credits; // mapping songId[collaboratorId] to Collaborator
+    mapping(uint256 => Collaborator[]) public credits; // mapping songId to Collaborator array (ex. [{name: "sweetman.eth", collaboratorType: "smart contract engineer"}, {name: "sagrado.eth", collaboratorType: "producer"}])
+    mapping(uint256 => string[]) public tags; // mapping songId to tags array (ex. ["sagrado", "cc0", "el capitan"])
 
     /// @notice music metadata (100% on-chain)
     /// @param _tokenId the token id
@@ -186,7 +187,6 @@ contract OnChainMusicMetadata is MusicStructs {
         string memory artistName = _getString(
             songs[_tokenId].song.audio.songDetails.artistName
         );
-        string memory tags = _getArrayString(songs[_tokenId].tags);
         string memory bpm = Strings.toString(
             songs[_tokenId].song.audio.songDetails.audioQuantitative.bpm
         );
@@ -216,7 +216,7 @@ contract OnChainMusicMetadata is MusicStructs {
         values[9] = _getString(
             songs[_tokenId].song.audio.songDetails.audioQualitative.genre
         );
-        values[10] = tags;
+        values[10] = _getArrayString(tags[_tokenId]);
         values[11] = bpm;
         values[12] = songKey;
         values[13] = _getString(

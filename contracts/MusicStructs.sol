@@ -6,7 +6,6 @@ contract MusicStructs {
     struct SongMetadata {
         SongContent song;
         PublishingData songPublishingData;
-        string[] tags; // tags array ["sagrado", "cc0", "el capitan"]
     }
 
     struct SongContent {
