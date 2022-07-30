@@ -168,7 +168,7 @@ contract OnChainMusicMetadata is MusicStructs {
         string memory description = _getString(
             songs[_tokenId].songPublishingData.description
         );
-        string memory losslessAudio = values[0] = _getString(
+        string memory losslessAudio = _getString(
             songs[_tokenId].song.audio.losslessAudio
         );
         string memory title = _getString(
@@ -193,6 +193,7 @@ contract OnChainMusicMetadata is MusicStructs {
             songs[_tokenId].song.audio.songDetails.audioQuantitative.key
         );
 
+        values[0] = title;
         values[1] = description;
         values[2] = artworkUri;
         values[3] = title;
