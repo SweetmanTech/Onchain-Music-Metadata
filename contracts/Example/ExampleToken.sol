@@ -5,7 +5,7 @@ import "../OnChainMusicMetadata.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract ExampleToken is OnChainMusicMetadata {
-    function setupSongMetadata() private {
+    function setupSongMetadata() internal {
         string memory title = "music nft";
         string
             memory description = "music NFT with data on-chain as Base64 encoded string.";
@@ -63,7 +63,7 @@ contract ExampleToken is OnChainMusicMetadata {
         tags[1].push("el capitan");
     }
 
-    function setupProjectMetadata() private {
+    function setupProjectMetadata() internal {
         PublishingData memory publishingData = PublishingData(
             "Sweets Beats",
             "My OnChain Music NFT Project",
