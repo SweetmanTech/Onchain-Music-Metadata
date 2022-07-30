@@ -1,14 +1,15 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.15;
 
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 import "./MusicStructs.sol";
 
 contract OnChainMusicMetadata is MusicStructs {
-    mapping(uint256 => SongMetadata) public _songs; // metadata for each token
+    mapping(uint256 => SongMetadata) public songs; // metadata for each token
     ProjectMetadata public _projectMetadata; // metadata for the project
+    mapping(uint256 => Collaborator[]) public credits; // mapping songId[collaboratorId] to Collaborator
 
     /// @notice music metadata (100% on-chain)
     /// @param _tokenId the token id
@@ -74,18 +75,29 @@ contract OnChainMusicMetadata is MusicStructs {
         returns (string memory)
     {
         string memory _string = "[";
-        for (uint256 i = 0; i < _song.collaboratorCount; i++) {
-            _string = string(abi.encodePacked(_string, "{name:"));
-            _string = string(abi.encodePacked(_string, _song.credits[i].name));
-            _string = string(abi.encodePacked(_string, ",collaboratorType:"));
+        uint256 trackNumber = _song
+            .song
+            .audio
+            .songDetails
+            .audioQuantitative
+            .trackNumber;
+        for (uint256 i = 0; i < credits[trackNumber].length; i++) {
+            _string = string(abi.encodePacked(_string, '{"name":'));
             _string = string(
                 abi.encodePacked(
                     _string,
-                    _song.credits[i].collaboratorType,
+                    _getString(credits[trackNumber][i].name)
+                )
+            );
+            _string = string(abi.encodePacked(_string, ',"collaboratorType":'));
+            _string = string(
+                abi.encodePacked(
+                    _string,
+                    _getString(credits[trackNumber][i].collaboratorType),
                     "}"
                 )
             );
-            if (i < _song.collaboratorCount - 1) {
+            if (i < credits[trackNumber].length - 1) {
                 _string = string(abi.encodePacked(_string, ","));
             }
         }
@@ -95,7 +107,7 @@ contract OnChainMusicMetadata is MusicStructs {
 
     /// @notice the keys to be a music nft
     /// @return _keys for music nft metadata
-    function _getKeys() public view returns (string[47] memory) {
+    function _getKeys() public pure returns (string[47] memory) {
         return [
             '{"name":',
             ',"description":',
@@ -154,32 +166,32 @@ contract OnChainMusicMetadata is MusicStructs {
     {
         string[47] memory values;
         string memory description = _getString(
-            _songs[_tokenId].songPublishingData.description
+            songs[_tokenId].songPublishingData.description
         );
         string memory losslessAudio = values[0] = _getString(
-            _songs[_tokenId].songPublishingData.title
+            songs[_tokenId].songPublishingData.title
         );
         string memory title = _getString(
-            _songs[_tokenId].songPublishingData.title
+            songs[_tokenId].songPublishingData.title
         );
         string memory artworkUri = _getString(
-            _songs[_tokenId].song.artwork.imageUri
+            songs[_tokenId].song.artwork.imageUri
         );
         string memory artworkMimeType = _getString(
-            _songs[_tokenId].song.artwork.imageMimeType
+            songs[_tokenId].song.artwork.imageMimeType
         );
         string memory artworkNft = _getString(
-            _songs[_tokenId].song.artwork.imageNft
+            songs[_tokenId].song.artwork.imageNft
         );
         string memory artistName = _getString(
-            _songs[_tokenId].song.audio.songDetails.artistName
+            songs[_tokenId].song.audio.songDetails.artistName
         );
-        string memory tags = _getArrayString(_songs[_tokenId].tags);
+        string memory tags = _getArrayString(songs[_tokenId].tags);
         string memory bpm = Strings.toString(
-            _songs[_tokenId].song.audio.songDetails.audioQuantitative.bpm
+            songs[_tokenId].song.audio.songDetails.audioQuantitative.bpm
         );
         string memory songKey = _getString(
-            _songs[_tokenId].song.audio.songDetails.audioQuantitative.key
+            songs[_tokenId].song.audio.songDetails.audioQuantitative.key
         );
 
         values[1] = description;
@@ -187,10 +199,10 @@ contract OnChainMusicMetadata is MusicStructs {
         values[3] = title;
         values[4] = artistName;
         values[5] = Strings.toString(
-            _songs[_tokenId].song.audio.songDetails.audioQuantitative.duration
+            songs[_tokenId].song.audio.songDetails.audioQuantitative.duration
         );
         values[6] = _getString(
-            _songs[_tokenId]
+            songs[_tokenId]
                 .song
                 .audio
                 .songDetails
@@ -199,27 +211,22 @@ contract OnChainMusicMetadata is MusicStructs {
         );
         values[7] = losslessAudio;
         values[8] = Strings.toString(
-            _songs[_tokenId]
-                .song
-                .audio
-                .songDetails
-                .audioQuantitative
-                .trackNumber
+            songs[_tokenId].song.audio.songDetails.audioQuantitative.trackNumber
         );
         values[9] = _getString(
-            _songs[_tokenId].song.audio.songDetails.audioQualitative.genre
+            songs[_tokenId].song.audio.songDetails.audioQualitative.genre
         );
         values[10] = tags;
         values[11] = bpm;
         values[12] = songKey;
         values[13] = _getString(
-            _songs[_tokenId].song.audio.songDetails.audioQualitative.license
+            songs[_tokenId].song.audio.songDetails.audioQualitative.license
         );
         values[14] = _getString(
-            _songs[_tokenId].songPublishingData.locationCreated
+            songs[_tokenId].songPublishingData.locationCreated
         );
         values[15] = _getString(
-            _songs[_tokenId].song.audio.songDetails.audioQualitative.externalUrl
+            songs[_tokenId].song.audio.songDetails.audioQualitative.externalUrl
         );
         values[16] = losslessAudio;
         values[17] = title;
@@ -233,36 +240,30 @@ contract OnChainMusicMetadata is MusicStructs {
         values[25] = _getString(_projectMetadata.publishingData.publisher);
         values[26] = _getString(_projectMetadata.upc);
         values[27] = _getString(
-            _songs[_tokenId].song.audio.songDetails.audioQualitative.isrc
+            songs[_tokenId].song.audio.songDetails.audioQualitative.isrc
         );
         values[28] = artworkUri;
         values[29] = artworkMimeType;
         values[30] = artworkNft;
-        values[31] = _getString(_songs[_tokenId].song.audio.lyrics.lyrics);
-        values[32] = _getString(_songs[_tokenId].song.audio.lyrics.lyricsNft);
+        values[31] = _getString(songs[_tokenId].song.audio.lyrics.lyrics);
+        values[32] = _getString(songs[_tokenId].song.audio.lyrics.lyricsNft);
         values[33] = artworkUri;
         values[34] = artworkMimeType;
         values[35] = artworkNft;
-        values[36] = _getString(
-            _songs[_tokenId].songPublishingData.releaseDate
-        );
-        values[37] = _getString(
-            _songs[_tokenId].songPublishingData.recordLabel
-        );
-        values[38] = _getString(_songs[_tokenId].songPublishingData.publisher);
-        values[39] = _getCollaboratorString(_songs[_tokenId]);
+        values[36] = _getString(songs[_tokenId].songPublishingData.releaseDate);
+        values[37] = _getString(songs[_tokenId].songPublishingData.recordLabel);
+        values[38] = _getString(songs[_tokenId].songPublishingData.publisher);
+        values[39] = _getCollaboratorString(songs[_tokenId]);
         values[40] = artistName;
         values[41] = _getString(_projectMetadata.publishingData.title);
         values[42] = bpm;
         values[43] = songKey;
         values[44] = _getString(
-            _songs[_tokenId].song.audio.songDetails.audioQualitative.genre
+            songs[_tokenId].song.audio.songDetails.audioQualitative.genre
         );
-        values[45] = _getString(
-            _songs[_tokenId].songPublishingData.recordLabel
-        );
+        values[45] = _getString(songs[_tokenId].songPublishingData.recordLabel);
         values[46] = _getString(
-            _songs[_tokenId].song.audio.songDetails.audioQualitative.license
+            songs[_tokenId].song.audio.songDetails.audioQualitative.license
         );
         return values;
     }

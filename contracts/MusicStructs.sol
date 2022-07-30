@@ -1,13 +1,11 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.15;
 
 contract MusicStructs {
     struct SongMetadata {
         SongContent song;
         PublishingData songPublishingData;
-        mapping(uint256 => Collaborator) credits; // array of credits ex [{"name":"sweetman eth","collaboratorType":"creator"}]
-        uint256 collaboratorCount;
         string[] tags; // tags array ["sagrado", "cc0", "el capitan"]
     }
 
