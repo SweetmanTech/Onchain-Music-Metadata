@@ -8,8 +8,8 @@ Standard for musicians pioneered by [Catalog](https://beta.catalog.works/) & [Mi
 
 ### You Newest Tool for Music NFTs (100% on chain)
 
-- [Your Smart Contract](https://mumbai.polygonscan.com/address/0xEdC026452bFB91112230270049939afCB4C78A75#code).
-- [Your Tokens in OpenSea](https://testnets.opensea.io/assets/mumbai/0xedc026452bfb91112230270049939afcb4c78a75/1)
+- [Your Music NFT Smart Contract (ERC721)](https://mumbai.polygonscan.com/address/0xb7CF570F9a816CEB90b780C324ECcdb6Fa6C722F#code).
+- [Your Music NFT in OpenSea](https://testnets.opensea.io/assets/mumbai/0xedc026452bfb91112230270049939afcb4c78a75/1)
 - Works out of the box.
 - 100% free CC0 technology (MIT License - use this w/o crediting me).
 
@@ -25,7 +25,7 @@ To add music NFT metadata to your next music NFT drop, just
 ### Example Music NFT:
 
 ```
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.15;
 
 import "onchain-music-metadata/contracts/Example/ExampleToken.sol";
@@ -56,7 +56,6 @@ contract MusicNFT is ERC721, ExampleToken {
         return musicTokenUri(_tokenId);
     }
 }
-
 ```
 
 ### Credits:
