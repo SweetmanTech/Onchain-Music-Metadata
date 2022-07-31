@@ -18,6 +18,9 @@ Standard for musicians pioneered by [Catalog](https://beta.catalog.works/) & [Mi
 - Works out of the box.
 - 100% free CC0 technology (MIT License - use this w/o crediting me).
 
+<img width="1440" alt="Screen Shot 2022-07-30 at 9 00 55 PM" src="https://user-images.githubusercontent.com/23249402/182004025-56ee0c37-0502-4677-9da4-b8d0217441a8.png">
+
+
 ### Get Started
 
 To add music NFT metadata to your next music NFT drop, just
