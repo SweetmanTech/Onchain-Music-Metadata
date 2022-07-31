@@ -2,6 +2,11 @@
 
 Standard for musicians pioneered by [Catalog](https://beta.catalog.works/) & [Mint Songs](https://zora.co/collections/0x2B5426A5B98a3E366230ebA9f95a24f09Ae4a584/93).
 
+- 73 unique Music NFT attributes stored on chain in your music nft metadata.
+<img width="449" alt="Screen Shot 2022-07-30 at 8 59 39 PM" src="https://user-images.githubusercontent.com/23249402/182004014-a8e7fb11-92b5-44d1-a538-0682611d81c7.png">
+
+
+
 ```diff
 - WARNING: these contracts are unaudited
 ```
