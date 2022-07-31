@@ -5,7 +5,7 @@
     "hardhat": "^2.10.1"
   },
   "description": "NFT music metadata. Stored on-chain as Base64 encoded string. Works with OpenSea, Zora, Catalog, and all other music NFT Protocols.",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "main": "contracts/OnChainMusicMetadata.sol",
   "directories": {
     "test": "test"
