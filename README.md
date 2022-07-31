@@ -3,9 +3,7 @@
 Standard for musicians pioneered by [Catalog](https://beta.catalog.works/) & [Mint Songs](https://zora.co/collections/0x2B5426A5B98a3E366230ebA9f95a24f09Ae4a584/93).
 
 - 73 unique Music NFT attributes stored on chain in your music nft metadata.
-<img width="449" alt="Screen Shot 2022-07-30 at 8 59 39 PM" src="https://user-images.githubusercontent.com/23249402/182004014-a8e7fb11-92b5-44d1-a538-0682611d81c7.png">
-
-
+  <img width="449" alt="Screen Shot 2022-07-30 at 8 59 39 PM" src="https://user-images.githubusercontent.com/23249402/182004014-a8e7fb11-92b5-44d1-a538-0682611d81c7.png">
 
 ```diff
 - WARNING: these contracts are unaudited
@@ -14,12 +12,11 @@ Standard for musicians pioneered by [Catalog](https://beta.catalog.works/) & [Mi
 ### You Newest Tool for Music NFTs (100% on chain)
 
 - [Your Music NFT Smart Contract (ERC721)](https://mumbai.polygonscan.com/address/0xb7CF570F9a816CEB90b780C324ECcdb6Fa6C722F#code).
-- [Your Music NFT in OpenSea](https://testnets.opensea.io/assets/mumbai/0xedc026452bfb91112230270049939afcb4c78a75/1)
+- [Your Music NFT in OpenSea](https://testnets.opensea.io/assets/mumbai/0xb7CF570F9a816CEB90b780C324ECcdb6Fa6C722F/1)
 - Works out of the box.
 - 100% free CC0 technology (MIT License - use this w/o crediting me).
 
 <img width="1440" alt="Screen Shot 2022-07-30 at 9 00 55 PM" src="https://user-images.githubusercontent.com/23249402/182004025-56ee0c37-0502-4677-9da4-b8d0217441a8.png">
-
 
 ### Get Started
 
